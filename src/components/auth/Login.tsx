@@ -53,14 +53,14 @@ export default class Login extends React.Component<AcceptedProps, LoginState>{
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-    handleSubmit(e: FormEvent) {
+    handleSubmit(e: any) {
         e.preventDefault()
         this.isLoading()
-        fetch('https://jpc-kyros-client.herokuapp.com/user/login', {
+        fetch('http://localhost:5000/user/login', {
             method: 'POST',
             body: JSON.stringify({
                 user: {
-                    emailAddress: this.state.email,
+                    email: this.state.email,
                     password: this.state.password,
                 }
             }),
