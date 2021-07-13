@@ -1,5 +1,5 @@
 import React, { FormEvent } from "react";
-import logo from '../../assets/logo.png';
+import logoTag from '../../assets/logo-tag.png';
 import styled from 'styled-components';
 import { Label, Input } from "reactstrap";
 import Loader from 'react-loader-spinner';
@@ -83,7 +83,7 @@ export default class Login extends React.Component<AcceptedProps, LoginState>{
     render() {
         return (
             <Wrapper className='register'>
-                <Logo src={logo} alt="" />
+                <Logo src={logoTag} alt="" />
                 {this.state.errorDisplay ?
                     <ErrorBox>
                         Incorrect Email or Password

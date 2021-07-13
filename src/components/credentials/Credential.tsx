@@ -1,1 +1,154 @@
-export {}
+import React from 'react';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
+import Loader from 'react-loader-spinner';
+import styled from 'styled-components';
+import CredentialTable from './CredentialTable';
+
+const GigsView = styled.div`
+    height: 66.5vh;
+    overflow: auto;
+    width: 100%;
+    margin: auto;
+`
+const H = styled.h1`
+    color: #FF9F1C;
+    padding-top: 30px;
+`
+
+type AcceptedProps={
+    userId: number
+}
+
+type CredentialState ={
+    userGigs:[
+        {
+            id: number,
+            location: string,
+            title: string,
+            instrument: Array<string>,
+            genre: Array<string>,
+            size: number,
+            content: string,
+            createdAt: string,
+            updatedAt: string,
+            userId: number,
+            posterName: string,
+            comments: [
+                {
+                    id: number,
+                    content: string,
+                    userId: number,
+                    gigId: number,
+                    posterName: string,
+                    createdAt: string,
+                }
+            ]
+        }
+    ],
+    createModalActive: boolean,
+    loading: boolean,
+    gigToEdit: {
+        id: number;
+        location: string;
+        title: string;
+        instrument: Array<string>;
+        genre: Array<string>;
+        size: number;
+        content: string;
+        createdAt: string;
+        updatedAt: string;
+        userId: number;
+        posterName: string,
+    },
+    editModalActive: boolean
+}
+
+export default class ThisCredentialIndex extends React.Component<AcceptedProps, CredentialState>{
+    constructor(props: AcceptedProps){
+        super(props)
+        this.state={
+            userGigs:[
+                {
+                    id: 0,
+                    location: '',
+                    title: '',
+                    instrument: [''],
+                    genre: [''],
+                    size: 0,
+                    content: '',
+                    createdAt: '',
+                    updatedAt: '',
+                    userId: 0,
+                    posterName: '',
+                    comments: [{
+                        id: 0,
+                        content: '',
+                        userId: 0,
+                        gigId: 0,
+                        posterName: '',
+                        createdAt: ''
+                    }]
+                }
+            ],
+            createModalActive: false,
+            loading: false,
+            gigToEdit: {
+                id: 0,
+                location: '',
+                title: '',
+                instrument: [''],
+                genre: [''],
+                size: 0,
+                content: '',
+                createdAt: '',
+                updatedAt: '',
+                userId: 0,
+                posterName: ''
+            },
+            editModalActive: false
+        }
+        this.gigFetch = this.gigFetch.bind(this)
+    }
+
+    componentDidMount(){
+        // console.log();
+        this.gigFetch()
+    }
+    gigFetch(){
+        this.setState({loading: true})
+        fetch(`https://ccm-amateurhour.herokuapp.com/gig/view/user/${this.props.userId}`, {
+            method: 'GET',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.token
+        }),
+    })
+    .then(res => res.json())
+    .then((gigData) =>{
+        this.setState({userGigs: gigData.userGigs}); console.log(gigData)
+    })
+    .then(()=>{console.log('logging state:', this.state.userGigs)})
+    .then(()=>{this.setState({loading: false})})
+}
+    
+
+    render(){
+        return(
+            <div>
+                <H>Gigs</H>
+                <GigsView>
+                {this.state.loading ? 
+                <div>
+                    <Loader type='Audio' color='#FF9F1C'/>
+                    <p>Loading...</p>
+                </div>
+                :
+                    <CredentialTable userGigs={this.state.userGigs} gigFetch={this.gigFetch} />
+                }
+                </GigsView> 
+
+            </div>
+        )
+    }
+
+}
