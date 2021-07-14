@@ -1,46 +1,41 @@
-# Getting Started with Create React App
+# KYROS - Client
+From the greek κύρος meaning
+: *status*
+: *validity*
+: *presitge*
+: *authority*
+---
+### What is it?
+Kyros is a social application designed for phsyicans and the many organizations who work with them. The project goal is not for physicians to be constantly engaging with the app unlike other social media options, but rather to maintain accurate and up-to-date profiles on physicians, their credentials, their association affiliations, and publications. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Technologies Incorporated
+The app is styled using StyledComponents, Reactstrap, and CSS to create an engaging user experience.
+The app implements TypeScript using React under the Node.js framework meaning it was written entirely in Javascript. 
 
-## Available Scripts
+### User Interaction by CRUD
+KYROS utilizes 3 tables from the server and lets the user Create, Read, Update, and Delete on all three.
 
-In the project directory, you can run:
+### Data Storage and Transfer
+The data is encrypted and pulls from a server deployed with Heroku. You can view the production application here => [Kyros App](https://jpc-kyros-client.herokuapp.com/home) or the source code for the back-end here => [Kyros Server](https://github.com/joshuapcasey/rb-final-server)
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Project Roadmap
+** KYROS V1 **
+- User profiles
+- User credentials
+- User affiliations & publications
+** KYROS V2 **
+- Improve styling and U|X throughout
+- Implement a search feature to query physicians and find profiles by speciality, license, or publication
+- Add test role for visibility beyond the landing page without requiring sign-in or registration
+** KYROS V3 **
+- Incorporate National Provider Identifier (NPI) to prepopulate physician information and validate users
+- Add webcrawler for National Organizations and Associations to maintain database accuracy and add userinfo
+- Add client role with dashboards to easily see physicians by specialty, engagement, or prestige
+** KYROS V4 **
+- Add Multi-Factor Authentication (MFA) to improve security
+- Add Single-Sign-On Authentication (SSO) to improve security, expedite registration/login, and data entry
+- Add comment threads to associations and publications to allow physicians to comment and engage with info
+** KYROS V5 **
+- Add userfeed on profile to display relevant publications by user specialty 
+- Incorporate available officers/roles of board or committees memberships by specialty 
+- Add direct messaging feature between user profiles

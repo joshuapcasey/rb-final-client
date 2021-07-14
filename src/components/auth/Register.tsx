@@ -93,7 +93,7 @@ export default class Register extends React.Component<AcceptedProps, RegisterSta
         return(
             <>
                 {this.state.loading ?  <LoaderDiv>
-                            <Loader type='Audio' color='#FF9F1C' />
+                            <Loader type='Grid' color='#FF9F1C' />
                         </LoaderDiv> :
             <RegisterDiv className='register'>
             <FormContainer onSubmit={this.handleSubmit}>

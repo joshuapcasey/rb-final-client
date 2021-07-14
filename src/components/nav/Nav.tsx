@@ -24,13 +24,14 @@ const NavBar = (props: AcceptedProps) => {
     height: 75px;
     background-color: lightgray;
     padding: 0 2% 0 2%;
-    border: 2px solid #666666;
+    border-bottom: 2px solid #666666;
     `
 
     const Logo = styled.img`
     height: 200px;
     width: 200px;
-    margin-top: 0% auto;
+    /* margin-top: 0% auto; */
+    display: flex;
     `
 
     const NavLinks = styled.div`
