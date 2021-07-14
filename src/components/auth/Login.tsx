@@ -91,7 +91,7 @@ export default class Login extends React.Component<AcceptedProps, LoginState>{
                     : null}
                 {this.state.loading ?
                     <LoaderDiv>
-                        <Loader type='Audio' color='#FF9F1C' />
+                        <Loader type='Watch' color='#1276D3' />
                     </LoaderDiv> :
                     <>
                         <form onSubmit={this.handleSubmit}>

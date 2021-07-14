@@ -77,13 +77,6 @@ export default class Person extends React.Component<AcceptedProps, PersonState>{
     //         this.zipToLocation()
     //     }
     // }
-    // zipToLocation() {
-    //     this.setState({ dataFetched: true })
-    //     fetch(`https://api.zippopotam.us/us/${this.props.user.zipCode}`)
-    //         .then(res => res.json())
-    //         .then(data => this.setState({ locData: data }))
-    //         .then(() => { console.log(this.state.locData) })
-    // }
 
     render() {
         return (

@@ -15,21 +15,22 @@ type AcceptedProps = {
     isUserAuthenticated: boolean
 }
 
-
 const NavBar = (props: AcceptedProps) => {
     const Nav = styled.nav`
     list-style: none;
     display: flex;
     justify-content: space-between;
-    width: 100vw;
-    height: 60px;
-    background-color: #0f0f0f;
-    padding: 0 8%;
+    width: 100% auto;
+    height: 75px;
+    background-color: lightgray;
+    padding: 0 2% 0 2%;
+    border: 2px solid #666666;
     `
 
     const Logo = styled.img`
-    height: 50px;
+    height: 200px;
     width: 200px;
+    margin-top: 0% auto;
     `
 
     const NavLinks = styled.div`
@@ -54,7 +55,7 @@ const NavBar = (props: AcceptedProps) => {
                 <Logo src={logo} alt="" />
                 <NavLinks>
                     <li><Link className='NavLinks' to='/About'>About</Link></li>
-                    <li><Link className='NavLinks' to='/people'>People</Link></li>
+                    <li><Link className='NavLinks' to='/physicians'>Physicians</Link></li>
                     <li><Link className='NavLinks' to='/profile'>Profile</Link></li>
 
                     <LOButton onClick={props.clickLogout}><FontAwesomeIcon icon={faSignOutAlt} size='2x' /></LOButton>
@@ -74,7 +75,6 @@ const NavBar = (props: AcceptedProps) => {
                             )
                         }} />
                     <Route exact path='/about'><Landing /></Route>
-                    {/* <Route exact path='/about'><Landing sessionToken={props.sessionToken}/></Route> */}
 
                     {/* <Route exact path='/people'><People /></Route> */}
                 {/* <Route exact path='/profile'>< Profile clearSession={props.clickLogout}/></Route> */}
