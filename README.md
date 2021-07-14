@@ -1,4 +1,4 @@
-# KYROS - ![KYROS](logo-tag.png)
+# KYROS - ![KYROS](/assets/logo-tag.png)
 From the greek κύρος meaning
 : *status*
 : *validity*
