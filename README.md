@@ -1,4 +1,4 @@
-# KYROS - Client
+# KYROS - ![KYROS](logo-tag.png)
 From the greek κύρος meaning
 : *status*
 : *validity*
