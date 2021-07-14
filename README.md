@@ -8,17 +8,17 @@ From the greek κύρος meaning
 ## What is it?
 Kyros is a social application designed for phsyicans and the many organizations who work with them. The project goal is not for physicians to be constantly engaging with the app unlike other social media options, but rather to maintain accurate and up-to-date profiles on physicians, their credentials, their association affiliations, and publications. 
 
-## Technologies Incorporated
+### Technologies Incorporated
 The app is styled using StyledComponents, Reactstrap, and CSS to create an engaging user experience.
 The app implements TypeScript using React under the Node.js framework meaning it was written entirely in Javascript. 
 
-## User Interaction by CRUD
+### User Interaction by CRUD
 KYROS utilizes 3 tables from the server and lets the user Create, Read, Update, and Delete on all three.
 
-## Data Storage and Transfer
+### Data Storage and Transfer
 The data is encrypted and pulls from a server deployed with Heroku. You can view the production application here => [Kyros App](https://jpc-kyros-client.herokuapp.com/home) or the source code for the back-end here => [Kyros Server](https://github.com/joshuapcasey/rb-final-server)
 
-## Project Roadmap
+### Project Roadmap
 ---
 **KYROS V1**
 - User profiles
