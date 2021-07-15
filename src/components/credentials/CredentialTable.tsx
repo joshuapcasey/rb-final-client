@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-const ThisGig = styled.div`
+const Thiscredential = styled.div`
     border: 1px solid black;
     margin: 20px 0;
     background-color: white;
-    height: fit-content
+    height: fit-content;
 `
 const PostData = styled.div`
 display: flex;
@@ -14,96 +14,87 @@ justify-content: space-evenly;
 height: fit-content;
 `
 type AcceptedProps = {
-    userGigs: [
+    userCredential: [
         {
             id: number,
-            location: string,
-            title: string,
-            instrument: Array<string>,
-            genre: Array<string>,
-            size: number,
-            content: string,
-            createdAt: string,
-            updatedAt: string,
+            npi: number,
+            med_school: string,
+            licenses: Array<string>,
+            specialty: Array<string>,
+            bio: string,
             userId: number,
-            posterName: string,
-            comments: [
-                {
-                    id: number,
-                    content: string,
-                    userId: number,
-                    gigId: number,
-                    posterName: string,
-                    createdAt: string
-                }]
+            // affiiation: [
+            //     {
+            //         id: number,
+            //         userId: number,
+            //         credentialId: number,
+            //         organization: string,
+            //         title : string
+            //     }]
         }
     ],
-    gigFetch: () => void,
+    credentialFetch: () => void,
 }
 
 type TableState = {
-    viewComment: boolean
+    viewAffiliation: boolean
 }
-class ThisGigTable extends React.Component<AcceptedProps, TableState>{
+class ThiscredentialTable extends React.Component<AcceptedProps, TableState>{
     constructor(props: AcceptedProps) {
         super(props)
         this.state = {
-            viewComment: false,
+            viewAffiliation: false,
         }
-        this.viewCommentToggle = this.viewCommentToggle.bind(this)
+        this.viewAffiliationToggle = this.viewAffiliationToggle.bind(this)
     }
-    viewCommentToggle() {
-        this.setState((state) => { return { viewComment: !state.viewComment } })
+    viewAffiliationToggle() {
+        this.setState((state) => { return { viewAffiliation: !state.viewAffiliation } })
     }
-    gigMapper = () => {
-        if (this.props.userGigs.length > 0) {
-            return this.props.userGigs.map((gig, index) => {
+    credentialMapper = () => {
+        if (this.props.userCredential.length > 0) {
+            return this.props.userCredential.map((credential, index) => {
                 return (
-                    <ThisGig key={index}>
+                    <Thiscredential key={index}>
                         <PostData>
                             <div>
-                                <h3>{gig.posterName}</h3>
-                                <h3>{gig.title}</h3>
-                                <h5>{gig.location}</h5>
+                                <h3>{credential.npi}</h3>
+                                <h3>{credential.med_school}</h3>
+                                <h5>{credential.licenses}</h5>
+                                <h5>{credential.specialty}</h5>
                             </div>
                             <div>
-                                <h5>{gig.size}</h5>
-                                <h5>{gig.instrument}</h5>
-                                <h5>{gig.genre}</h5>
-                            </div>
-                            <div>
-                                <p>{gig.content}</p>
+                                <p>{credential.bio}</p>
                             </div>
                         </PostData>
                         <footer>
                             <div>
                                 <p>Likes</p>
-                                <p >Comments: {gig.comments.length}</p>
+                                {/* <p >Affiiation: {credential.affiiation.}</p> */}
                             </div>
                             <div>
-                                <button onClick={this.viewCommentToggle}>Comments</button>
+                                <button onClick={this.viewAffiliationToggle}>affiiation</button>
                             </div>
                         </footer>
                         <div>
-                            {this.state.viewComment ?
+                            {this.state.viewAffiliation ?
                                 <div>
-                                    {/* <UCommentTable gigFetch={this.props.gigFetch} comments={this.props.gig.comments} gigId={this.props.gig.id} /> */}
+                                    {/* affiliationTable credentialFetch={this.props.credentialFetch} affiiation={this.props.credential.affiiation} credentialId={this.props.credential.id} /> */}
                                 </div> : null}
 
                         </div>
-                    </ThisGig>
+                    </Thiscredential>
                 )
             }
             )
         } else {
-            return 'No Gigs Posted Yet'
+            return 'No credentials Posted Yet'
         }
     }
     render() {
 
         return (
             <div>
-                {this.gigMapper()}
+                {this.credentialMapper()}
             </div >
         )
     }
@@ -111,4 +102,4 @@ class ThisGigTable extends React.Component<AcceptedProps, TableState>{
 }
 
 
-export default ThisGigTable;
+export default ThiscredentialTable;

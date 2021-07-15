@@ -3,8 +3,9 @@ import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 import Loader from 'react-loader-spinner';
 import styled from 'styled-components';
 import CredentialTable from './CredentialTable';
+import APIURL from '../../helpers/environment';
 
-const GigsView = styled.div`
+const CredentialView = styled.div`
     height: 66.5vh;
     overflow: auto;
     width: 100%;
@@ -20,45 +21,36 @@ type AcceptedProps={
 }
 
 type CredentialState ={
-    userGigs:[
+    userCredential:[
         {
-            id: number,
-            location: string,
-            title: string,
-            instrument: Array<string>,
-            genre: Array<string>,
-            size: number,
-            content: string,
-            createdAt: string,
-            updatedAt: string,
-            userId: number,
-            posterName: string,
-            comments: [
+        id: number;
+        npi: number;
+        med_school: string;
+        licenses: Array<string>;
+        specialty: Array<string>;
+        bio: string;
+        userId: 0,
+            affiliation: [
                 {
                     id: number,
-                    content: string,
                     userId: number,
-                    gigId: number,
-                    posterName: string,
-                    createdAt: string,
+                    credentialId: number,
+                    organization: string,
+                    title: string,
                 }
             ]
         }
     ],
     createModalActive: boolean,
     loading: boolean,
-    gigToEdit: {
+    credentialToEdit: {
         id: number;
-        location: string;
-        title: string;
-        instrument: Array<string>;
-        genre: Array<string>;
-        size: number;
-        content: string;
-        createdAt: string;
-        updatedAt: string;
-        userId: number;
-        posterName: string,
+        npi: number;
+        med_school: string;
+        licenses: Array<string>;
+        specialty: Array<string>;
+        bio: string;
+        userId: 0,
     },
     editModalActive: boolean
 }
@@ -67,56 +59,47 @@ export default class ThisCredentialIndex extends React.Component<AcceptedProps, 
     constructor(props: AcceptedProps){
         super(props)
         this.state={
-            userGigs:[
+            userCredential:[
                 {
                     id: 0,
-                    location: '',
-                    title: '',
-                    instrument: [''],
-                    genre: [''],
-                    size: 0,
-                    content: '',
-                    createdAt: '',
-                    updatedAt: '',
+                    npi: 0,
+                    med_school: '',
+                    licenses: [''],
+                    specialty: [''],
+                    bio: '',
                     userId: 0,
-                    posterName: '',
-                    comments: [{
-                        id: 0,
-                        content: '',
-                        userId: 0,
-                        gigId: 0,
-                        posterName: '',
-                        createdAt: ''
-                    }]
+                        affiliation: [{
+                            id: 0,
+                            userId: 0,
+                            credentialId: 0,
+                            organization: '',
+                            title: ''
+                        }]
                 }
             ],
             createModalActive: false,
             loading: false,
-            gigToEdit: {
+            credentialToEdit: {
                 id: 0,
-                location: '',
-                title: '',
-                instrument: [''],
-                genre: [''],
-                size: 0,
-                content: '',
-                createdAt: '',
-                updatedAt: '',
+                npi: 0,
+                med_school: '',
+                licenses: [''],
+                specialty: [''],
+                bio: '',
                 userId: 0,
-                posterName: ''
             },
             editModalActive: false
         }
-        this.gigFetch = this.gigFetch.bind(this)
+        this.credentialFetch = this.credentialFetch.bind(this)
     }
 
     componentDidMount(){
         // console.log();
-        this.gigFetch()
+        this.credentialFetch()
     }
-    gigFetch(){
+    credentialFetch(){
         this.setState({loading: true})
-        fetch(`https://ccm-amateurhour.herokuapp.com/gig/view/user/${this.props.userId}`, {
+        fetch(`${APIURL}${this.props.userId}`, {
             method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',
@@ -124,10 +107,10 @@ export default class ThisCredentialIndex extends React.Component<AcceptedProps, 
         }),
     })
     .then(res => res.json())
-    .then((gigData) =>{
-        this.setState({userGigs: gigData.userGigs}); console.log(gigData)
+    .then((credentialData) =>{
+        this.setState({userCredential: credentialData.userCredential}); console.log(credentialData)
     })
-    .then(()=>{console.log('logging state:', this.state.userGigs)})
+    .then(()=>{console.log('logging state:', this.state.userCredential)})
     .then(()=>{this.setState({loading: false})})
 }
     
@@ -135,17 +118,17 @@ export default class ThisCredentialIndex extends React.Component<AcceptedProps, 
     render(){
         return(
             <div>
-                <H>Gigs</H>
-                <GigsView>
+                <H>Credentials</H>
+                <CredentialView>
                 {this.state.loading ? 
                 <div>
                     <Loader type='Audio' color='#FF9F1C'/>
                     <p>Loading...</p>
                 </div>
                 :
-                    <CredentialTable userGigs={this.state.userGigs} gigFetch={this.gigFetch} />
+                    <CredentialTable userCredential={this.state.userCredential} credentialFetch={this.credentialFetch} />
                 }
-                </GigsView> 
+                </CredentialView> 
 
             </div>
         )

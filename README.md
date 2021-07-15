@@ -1,4 +1,4 @@
-# KYROS - ![KYROS](logo.png)
+# KYROS ![KYROS](logo.png)
 From the greek κύρος meaning
 : *status*
 : *validity*
@@ -10,7 +10,7 @@ Kyros is a social application designed for phsyicans and the many organizations 
 
 ### Technologies Incorporated
 The app is styled using StyledComponents, Reactstrap, and CSS to create an engaging user experience.
-The app implements TypeScript using React under the Node.js framework meaning it was written entirely in Javascript. 
+The app implements TypeScript using React under the Node.js framework.
 
 ### User Interaction by CRUD
 KYROS utilizes 3 tables from the server and lets the user Create, Read, Update, and Delete on all three.
